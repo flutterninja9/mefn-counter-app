@@ -27,10 +27,10 @@ const increment = asyncHandler(
           count: 0,
         })
       }
-      
-      counter = await Counter.findOneAndUpdate({
-        count: counter.count+1
-      })
+
+      counter = await Counter.findOneAndUpdate({}, { 
+        $inc: { count: 1 } 
+     }, {new: true })
 
       counter = await Counter.findOne()
       res.json({
@@ -49,9 +49,9 @@ const decrement = asyncHandler(
         })
       }
       
-      counter = await Counter.findOneAndUpdate({
-        count: counter.count-1
-      })
+      counter = await Counter.findOneAndUpdate({}, { 
+        $inc: { count: -1 } 
+     }, {new: true })
 
       counter = await Counter.findOne()
       res.json({
