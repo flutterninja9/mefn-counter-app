@@ -3,7 +3,9 @@ const colors = require('colors')
 const dotenv = require('dotenv').config()
 const handleHomepage = require('./controllers/indexController')
 const counterRoutes = require('./routes/counterRoutes')
+const { connect } = require('./configs/dbConnector')
 
+connect()
 const port = process.env.PORT
 const app = express()
 app.use(express.static('public'))
